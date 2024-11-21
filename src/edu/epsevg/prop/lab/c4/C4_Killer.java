@@ -110,7 +110,7 @@ public class C4_Killer implements Jugador, IAuto {
    * @param column The column to check.
    * @return The color of the last piece in the specified column.
    */
-  private int getTopPiece(Tauler t, int column) {
+  public int getTopPiece(Tauler t, int column) {
     for (int i = t.getMida() - 1; i >= 0; --i)
       if (t.getColor(i, column) != 0) return t.getColor(i, column);
     return 0;
@@ -139,7 +139,7 @@ public class C4_Killer implements Jugador, IAuto {
    * @param context The current context containing the board, depth, color, and alpha-beta bounds.
    * @return The best value for the AI's move.
    */
-  private int minimaxMaxMovement(MinimaxContext context) {
+  public int minimaxMaxMovement(MinimaxContext context) {
     int bestValue = this.MINUS_INFINITE, c = getTopPiece(context.t, context.column);
     if (context.t.solucio(context.column, c) || context.depth == 0 || !context.t.espotmoure()) {
       return context.t.solucio(context.column, c)
@@ -175,7 +175,7 @@ public class C4_Killer implements Jugador, IAuto {
    * @param context The current context containing the board, depth, color, and alpha-beta bounds.
    * @return The best value for the opponent's move.
    */
-  private int minimaxMinMovement(MinimaxContext context) {
+  public int minimaxMinMovement(MinimaxContext context) {
     int c = getTopPiece(context.t, context.column);
     boardsExplored++;
     gameBoards++;
